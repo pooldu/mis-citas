@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Specialty;
+use App\Http\Controllers\Controller;
 
 class SpecialtyController extends Controller
 {
-    /*public function __construct()
-    {
-        $this->middleware('auth');
-    }*/
+
     public function index()
     {
         $specialties = Specialty::all();
+        $specialties = Specialty::paginate(5);
         return view('specialties.index', compact('specialties'));
     }
 
@@ -46,7 +45,7 @@ class SpecialtyController extends Controller
         $specialty->description = $request->input('description');
         $specialty->save(); //insert
         $notification = 'La especialidad se ha registrado correctamente.';
-        return redirect('/specialties')->with(compact('notification'));;
+        return redirect('/specialties')->with(compact('notification'));
     }
 
     public function edit(Specialty $specialty)

@@ -32,7 +32,12 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Contraseña" type="password" type="password" name="password"required autocomplete="current-password" x-input-error :messages="$errors->get('password')">
+                    <input class="form-control" placeholder="Contraseña" type="password" name="password"required autocomplete="current-password" x-input-error :messages="$errors->get('password')">
+                    <div class="input-group-append">
+                      <span class="input-group-text" onclick="togglePasswordVisibility()" style="cursor: pointer;">
+                        <i id="toggle-icon" class="fa fa-eye"></i>
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div class="custom-control custom-control-alternative custom-checkbox">
@@ -58,5 +63,25 @@
         </div>
       </div>
     </div>
+    <!-- Mostrar/Ocultar contraseña -->
+    @push('scripts')
+      <script>
+        window.togglePasswordVisibility = function () {
+          const passwordInput = document.querySelector('input[name="password"]');
+          const toggleIcon = document.getElementById('toggle-icon');
+
+          if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleIcon.classList.remove('fa-eye');
+            toggleIcon.classList.add('fa-eye-slash');
+          } else {
+            passwordInput.type = 'password';
+            toggleIcon.classList.remove('fa-eye-slash');
+            toggleIcon.classList.add('fa-eye');
+          }
+        }
+      </script>
+    @endpush
 @endsection
+
 

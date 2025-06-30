@@ -5,10 +5,10 @@
       <div class="card-header border-0">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="mb-0">Especialidades</h3>
+            <h3 class="mb-0">Pacientes</h3>
           </div>
           <div class="col text-right">
-            <a href="{{ url('specialties/create') }}" class="btn btn-sm btn-success">Nueva especialidad</a>
+            <a href="{{ url('patients/create') }}" class="btn btn-sm btn-success">Nuevo Paciente</a>
           </div>
         </div>
       </div>
@@ -25,24 +25,28 @@
           <thead class="thead-light">
             <tr>
               <th scope="col">Nombre</th>
-              <th scope="col">Descripcion</th>
+              <th scope="col">E-mail</th>
+              <th scope="col">Cédula</th>
               <th scope="col">Opciones</th>
             </tr>
           </thead>
           <tbody>
-            @foreach($specialties as $specialty)
+            @foreach($patients as $patient)
             <tr>
               <th scope="row">
-                {{ $specialty->name }}
+                {{ $patient->name }}
               </th>
               <td>
-                {{ $specialty->description }}
+                {{ $patient->email }}
               </td>
               <td>
-                <form action="{{ url('/specialties/'.$specialty->id) }}" method="POST">
+                {{ $patient->cedula }}
+              </td>
+              <td>
+                <form action="{{ url('/patients/'.$patient->id) }}" method="POST">
                   @csrf
                   @method('DELETE')
-                  <a href="{{ url('/specialties/'.$specialty->id.'/edit') }}" class="btn btn-sm btn-info">Editar</a>
+                  <a href="{{ url('/patients/'.$patient->id.'/edit') }}" class="btn btn-sm btn-info">Editar</a>
                   <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
                 </form>
               </td>
@@ -52,7 +56,7 @@
         </table>
       </div>
       <div class="card-body">
-        {{ $specialties->links() }}
-      </div>
+        {{ $patients->links() }}
+      </div>      
     </div>
 @endsection

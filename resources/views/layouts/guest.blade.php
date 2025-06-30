@@ -18,6 +18,8 @@
   <link href="{{ asset('vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="{{ asset('css/argon.css?v=1.0.0') }}" rel="stylesheet">
+  <!-- Mostrar/Ocultar contraseña -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body class="bg-default">
@@ -118,6 +120,7 @@
   <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
   <!-- Argon JS -->
   <script src="{{ asset('js/argon.js?v=1.0.0') }}"></script>
+  @stack('scripts')
 </body>
 
 </html>

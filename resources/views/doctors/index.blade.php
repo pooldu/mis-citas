@@ -41,7 +41,7 @@
               </td>
               <td>
                 {{ $doctor->cedula }}
-              </td>>
+              </td>
               <td>
                 <form action="{{ url('/doctors/'.$doctor->id) }}" method="POST">
                   @csrf
@@ -54,6 +54,9 @@
             @endforeach
           </tbody>
         </table>
+      </div>
+      <div class="card-body">
+        {{ $doctors->links() }}
       </div>
     </div>
 @endsection
